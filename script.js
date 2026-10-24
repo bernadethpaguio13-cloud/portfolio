@@ -20,9 +20,9 @@ if (menuButton && navigation) {
     if (event.key === 'Escape') closeMenu();
   });
 }
-const projectVideo = document.querySelector('.project-video');
-const videoFallback = document.querySelector('.video-fallback');
-if (projectVideo && videoFallback) {
+document.querySelectorAll('.project-video').forEach((projectVideo) => {
+  const videoFallback = projectVideo.parentElement.querySelector('.video-fallback');
+  if (!videoFallback) return;
   projectVideo.addEventListener('error', () => {
     projectVideo.hidden = true;
     videoFallback.hidden = false;
@@ -30,4 +30,4 @@ if (projectVideo && videoFallback) {
   projectVideo.addEventListener('loadedmetadata', () => {
     videoFallback.hidden = true;
   });
-}
+});
