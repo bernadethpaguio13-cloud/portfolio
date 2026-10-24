@@ -13,3 +13,6 @@ The portfolio features three short-form video samples: a Vic Torres introduction
 ## Contact
 
 The contact button opens an email draft to Bernadeth. The content avoids unverified performance claims and omits private contact details such as phone number and street address.
+## Deployment
+
+The production site is connected to Vercel and deploys from the main branch.
