@@ -67,3 +67,9 @@ document.querySelectorAll('.project-video').forEach((projectVideo) => {
     videoFallback.hidden = true;
   });
 });
+/* Hero background preview: ?bg=pink | indigo | violet */
+(() => {
+  const m = location.search.match(/[?&]bg=(\w+)/);
+  const hero = document.querySelector('.hero');
+  if (m && hero) hero.dataset.bg = m[1];
+})();
