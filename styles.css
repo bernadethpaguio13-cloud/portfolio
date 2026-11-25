@@ -562,3 +562,14 @@ h2{margin:0}
 @media(max-width:680px){
   .cert-block:before,.cert-block:after{left:10px}
 }
+
+/* Right column: training, certificates and ratings, vertically centred next to the left column */
+.background-content{align-items:stretch}
+.background-side{align-self:center}
+.background-side .shop-ratings{margin-top:22px}
+
+/* three shops: the third card spans the full width */
+.shop-grid .shop-card:nth-child(3){grid-column:1/-1;flex-direction:row;align-items:center;flex-wrap:wrap;gap:4px 18px}
+.shop-grid .shop-card:nth-child(3) .shop-platform{flex:0 0 100%}
+.shop-grid .shop-card:nth-child(3) .shop-detail{flex:1 1 auto}
+.shop-grid .shop-card:nth-child(3) .shop-name{margin-top:0}
