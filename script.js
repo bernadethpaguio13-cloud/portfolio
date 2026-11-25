@@ -32,7 +32,7 @@ if ('IntersectionObserver' in window && !reducedMotion) {
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.intro, .services, .work-heading, .toolkit, .background, .contact, .service-card, .work-card, .tool-group, .detail-block').forEach((el, i) => {
+  document.querySelectorAll('.intro, .services, .work-heading, .toolkit, .background, .certs, .contact, .service-card, .work-card, .tool-group, .detail-block').forEach((el, i) => {
     el.classList.add('reveal');
     el.style.setProperty('--d', `${(i % 3) * 0.08}s`);
     revealObserver.observe(el);
@@ -72,4 +72,22 @@ document.querySelectorAll('.project-video').forEach((projectVideo) => {
   const m = location.search.match(/[?&]bg=(\w+)/);
   const hero = document.querySelector('.hero');
   if (m && hero) hero.dataset.bg = m[1];
+})();
+
+/* Certificate preview */
+(() => {
+  const dialog = document.getElementById('cert-dialog');
+  if (!dialog || !dialog.showModal) return;
+  const img = dialog.querySelector('img');
+  const title = dialog.querySelector('.cert-dialog-title');
+  document.querySelectorAll('.cert-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      img.src = card.dataset.full;
+      img.alt = 'Certificate of completion: ' + card.dataset.title;
+      title.textContent = card.dataset.title;
+      dialog.showModal();
+    });
+  });
+  dialog.querySelector('.cert-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
 })();
