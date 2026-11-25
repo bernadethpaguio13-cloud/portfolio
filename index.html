@@ -5,18 +5,65 @@
 <main id="main">
 
 <section class="hero section-wrap" id="top" aria-labelledby="hero-title">
-  <div class="mosaic-stage">
-    <canvas id="mosaic" data-portrait="media/portrait.jpg" role="img" aria-label="Portrait of Bernadeth made of tiny frames from her video edits"></canvas>
-    <svg class="scribble" viewBox="0 0 520 420" aria-hidden="true" preserveAspectRatio="none"><path class="scribble-a" d="M96 372C150 340 196 280 242 222"/><path class="scribble-b" d="M330 40c-10 70 40 150 70 230 24 62 80 56 96-4 18-66 8-120 20-196"/><path class="scribble-c" d="M340 112C400 92 450 70 500 58M470 52l30 6-24 22"/></svg>
-  </div>
-  <div class="hero-top mono"><span><i class="status-dot"></i> INDEPENDENT CREATIVE · PHILIPPINES</span><span>VISUAL STUDY · 001—003</span></div>
   <div class="hero-copy">
+    <p class="eyebrow"><span class="status-dot"></span> Independent creative · Philippines</p>
     <h1 id="hero-title">Good stories<br>make <span>people</span><br>pause.</h1>
     <p class="hero-intro">I’m Bernadeth — a short-form video editor and social media content creator. I turn raw clips and product details into clear, engaging content.</p>
     <div class="hero-actions"><a class="button button-primary" href="#experience">Explore my work <span>↓</span></a><a class="text-link" href="mailto:bernadethpaguio13@gmail.com">Get in touch <span>↗</span></a></div>
   </div>
-  <a class="hero-card" href="mailto:bernadethpaguio13@gmail.com"><span class="hero-card-head mono">✎ Have something in mind?</span><span class="hero-card-body">Let’s make it worth watching.</span><span class="hero-card-send" aria-hidden="true">↗</span></a>
-  <p class="hero-credit mono">Made of tiny frames from my own edits · move your cursor over it</p>
+
+  <div class="mosaic-stage">
+    <canvas id="mosaic" data-portrait="media/portrait.jpg" role="img" aria-label="Portrait of Bernadeth made of tiny frames from her video edits"></canvas>
+  </div>
+
+  <div class="hero-flower" role="img" aria-label="Abstract flower artwork labelled Cuts, Captions, Transitions and Music">
+    <svg viewBox="0 0 440 440" aria-hidden="true">
+      <defs>
+        <radialGradient id="petalFill" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#ffffff" stop-opacity=".34"/><stop offset="1" stop-color="#ffffff" stop-opacity=".12"/></radialGradient>
+        <filter id="blur30" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter>
+        <filter id="blur6" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+        <path id="petal" d="M220 220C150 224 36 196 30 118 26 52 98 18 154 58c40 28 66 96 66 162Z"/>
+      </defs>
+      <g class="petals">
+        <use href="#petal" fill="url(#petalFill)" stroke="#ffffff55"/>
+        <use href="#petal" fill="url(#petalFill)" stroke="#ffffff55" transform="rotate(90 220 220)"/>
+        <use href="#petal" fill="url(#petalFill)" stroke="#ffffff55" transform="rotate(180 220 220)"/>
+        <use href="#petal" fill="url(#petalFill)" stroke="#ffffff55" transform="rotate(270 220 220)"/>
+      </g>
+      <g class="glow" filter="url(#blur30)"><circle cx="170" cy="170" r="60" fill="#ff2fc4"/><circle cx="270" cy="170" r="60" fill="#ff2fc4"/><circle cx="170" cy="270" r="60" fill="#ff2fc4"/><circle cx="270" cy="270" r="60" fill="#ff2fc4"/></g>
+      <g class="glow-core" filter="url(#blur6)"><path d="M220 120c10 62 38 90 100 100-62 10-90 38-100 100-10-62-38-90-100-100 62-10 90-38 100-100Z" fill="#ff5bd6" opacity=".9"/></g>
+      <path class="dash" d="M220 96c60 0 124 44 124 124s-64 124-124 124S96 300 96 220 160 96 220 96Z" fill="none" stroke="#ffffff88" stroke-dasharray="4 6"/>
+      <g class="petal-labels" fill="#fff" font-family="Manrope,sans-serif" font-size="19" font-weight="500" text-anchor="middle">
+        <text transform="translate(120 112) rotate(-38)">Cuts</text>
+        <text transform="translate(322 112) rotate(38)">Captions</text>
+        <text transform="translate(112 330) rotate(42)">Music</text>
+        <text transform="translate(326 330) rotate(-42)">Transitions</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-bubbles" aria-hidden="true">
+    <span class="bubble b1"><b>CapCut</b></span>
+    <span class="bubble b2"><b>Canva</b></span>
+    <span class="bubble b3"><b>Adobe</b><small>basic</small></span>
+    <span class="bubble b4 hot"><b>Short-form</b><small>video editing</small></span>
+    <span class="bubble b5"><b>Gemini</b></span>
+    <span class="bubble b6"><b>Google Flow</b></span>
+    <span class="bubble b7"><b>ChatGPT</b></span>
+  </div>
+
+  <div class="hero-side">
+    <div class="hero-notes" aria-hidden="true">
+      <p class="note n-yellow">Good stories make people pause.</p>
+      <p class="note n-pink">Ideas into short stories</p>
+      <p class="note n-blue">Social-first content</p>
+    </div>
+    <a class="hero-card" href="mailto:bernadethpaguio13@gmail.com">
+      <span class="hero-card-head mono">✎ Have something in mind?</span>
+      <span class="hero-card-body">Let’s make it worth watching.</span>
+      <span class="hero-card-send" aria-hidden="true">↗</span>
+    </a>
+  </div>
   <div class="hero-foot mono"><span>01 / A LITTLE ABOUT ME</span><span>SCROLL TO EXPLORE <b>↓</b></span></div>
 </section>
 
@@ -32,11 +79,12 @@
 <article class="work-card project-card"><div class="work-visual video-visual"><span class="visual-tag mono">BRAND STORY / 03</span><video class="project-video" controls playsinline preload="none" poster="media/dv-shop-half-of-the-story.jpg" aria-label="Short-form brand video: DV Shop, Half of the Story"><source src="media/dv-shop-half-of-the-story.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-fallback" hidden><span class="fallback-mark">↗</span><p>Video preview unavailable.</p></div></div><div class="work-meta"><span class="mono">DV SHOP / HALF OF THE STORY</span><span>Portrait edit · 02:42</span></div></article>
 </div>
 <a class="site-card" href="https://hiraya-threads.vercel.app" target="_blank" rel="noreferrer"><div class="site-card-art"><img src="media/hiraya-preview.jpg" alt="Screenshot of the Hiraya Threads online shop website" loading="lazy"></div><div class="site-card-body"><span class="visual-tag-inline mono">WEBSITE / 04</span><h3>Hiraya Threads</h3><p>An online fashion shop with an AI Virtual Try-On, so shoppers can preview outfits on their own photo, plus direct Shopee and Lazada buy links.</p><span class="site-card-cta">Visit website <span>↗</span></span></div></a>
+<a class="site-card" href="https://fashion-seller-hub.vercel.app" target="_blank" rel="noreferrer"><div class="site-card-art"><img src="media/fashion-hub-preview.jpg" alt="Screenshot of the Fashion Seller Hub website" loading="lazy"></div><div class="site-card-body"><span class="visual-tag-inline mono">WEBSITE / 05</span><h3>Fashion Seller Hub</h3><p>A simple workspace for fashion shops to manage products, sizes, colors and stock in one place.</p><span class="site-card-cta">Visit website <span>↗</span></span></div></a>
 <p class="work-note mono"><span class="status-dot"></span> SELECT A CLIP TO PLAY · BEST VIEWED WITH SOUND</p></section>
 
 <section class="toolkit section-wrap"><div class="section-label mono"><span>04</span> TOOLKIT</div><div class="toolkit-content"><h2>Tools for the<br><span>making part.</span></h2><div class="tool-groups"><div class="tool-group"><p class="mono">EDIT &amp; DESIGN</p><div class="tool-pills"><span>CapCut</span><span>Canva</span><span>Adobe <small>basic</small></span></div></div><div class="tool-group"><p class="mono">EVERYDAY WORK</p><div class="tool-pills"><span>Google Workspace</span><span>Microsoft Word</span><span>ChatGPT</span><span>Gemini</span><span>Google Flow</span></div></div></div></div></section>
 
-<section class="background section-wrap"><div class="section-label mono"><span>05</span> BACKGROUND</div><div class="background-content"><div class="background-main"><p class="eyebrow">WORK EXPERIENCE</p><h2>Social and product<br>content, with a careful eye.</h2><p>At BBB Motoworkz, I supported Facebook page content, prepared promotional posts and short videos, responded to customer questions, and helped maintain accurate product and inventory information.</p><div class="roles"><article class="role"><h3>Motor Shop Assistant · Cashier · Inventory &amp; Social Media Support</h3><p class="role-meta mono">BBB MOTOWORKZ · FULL-TIME · 2024–2026</p><ul><li>Managed the Facebook business page: promotional posts, product photos and customer inquiries.</li><li>Created and edited promotional images and short videos for social media uploads.</li><li>Maintained accurate inventory spreadsheets and prepared inventory and daily sales reports.</li><li>Organized and published product information for social media audiences.</li></ul></article><article class="role"><h3>Online Seller</h3><p class="role-meta mono">PART-TIME · SELF-EMPLOYED</p><ul><li>Created and maintained online product listings: titles, descriptions, images, categories and pricing.</li><li>Edited product images and prepared visual content and short videos to showcase products.</li><li>Responded to customer inquiries and coordinated order updates with clear communication.</li></ul></article></div></div><div class="background-side"><div class="detail-block"><p class="eyebrow">TRAINING</p><ul><li><span>Virtual Assistant Training</span><time>May 2026</time></li><li><span>Data Entry Training</span><time>June 2026</time></li><li><span>Social Media Marketing</span><time>July 2026</time></li></ul></div><div class="detail-block"><p class="eyebrow">CORE COMPETENCIES</p><div class="tool-pills"><span>Short-form video editing</span><span>Clip trimming &amp; cutting</span><span>Captions &amp; subtitles</span><span>Transitions &amp; effects</span><span>Music &amp; basic audio</span><span>Promotional content</span><span>File organization</span><span>Attention to detail</span></div></div><div class="detail-block"><p class="eyebrow">EDUCATION</p><div class="language-list"><span>High School Graduate · Philippines</span></div></div><div class="detail-block"><p class="eyebrow">LANGUAGES</p><div class="language-list"><span>English</span><span>Filipino</span></div></div></div></div></section>
+<section class="background section-wrap"><div class="section-label mono"><span>05</span> BACKGROUND</div><div class="background-content"><div class="background-main"><p class="eyebrow">WORK EXPERIENCE</p><h2>Social and product<br>content, with a careful eye.</h2><p>At BBB Motoworkz, I supported Facebook page content, prepared promotional posts and short videos, responded to customer questions, and helped maintain accurate product and inventory information.</p><div class="roles"><article class="role"><h3>Motor Shop Assistant · Cashier · Inventory &amp; Social Media Support</h3><p class="role-meta mono">BBB MOTOWORKZ · FULL-TIME · 2024–2026</p><ul><li>Managed the Facebook business page: promotional posts, product photos and customer inquiries.</li><li>Created and edited promotional images and short videos for social media uploads.</li><li>Maintained accurate inventory spreadsheets and prepared inventory and daily sales reports.</li><li>Organized and published product information for social media audiences.</li></ul></article><article class="role"><h3>Online Seller</h3><p class="role-meta mono">PART-TIME · SELF-EMPLOYED</p><ul><li>Created and maintained online product listings: titles, descriptions, images, categories and pricing.</li><li>Edited product images and prepared visual content and short videos to showcase products.</li><li>Responded to customer inquiries and coordinated order updates with clear communication.</li></ul></article></div><div class="shop-ratings"><p class="eyebrow">ONLINE SHOP RATINGS</p><div class="shop-grid"><a class="shop-card" href="https://shopee.ph/onestopshop13" target="_blank" rel="noreferrer"><span class="shop-platform mono">SHOPEE</span><span class="shop-score">4.7 <i>★</i></span><span class="shop-detail">1.2K ratings · 7.5K followers</span><span class="shop-name">onestopshop13 <b>↗</b></span></a><a class="shop-card" href="https://www.lazada.com.ph/shop/kate-catherine-online-shop/" target="_blank" rel="noreferrer"><span class="shop-platform mono">LAZADA</span><span class="shop-score">96%</span><span class="shop-detail">Seller rating · 5,470 followers</span><span class="shop-name">Kate catherine online shop <b>↗</b></span></a></div><p class="shop-note mono">AS OF NOV 25, 2026 · FROM THE PUBLIC SHOP PAGES</p></div></div><div class="background-side"><div class="detail-block"><p class="eyebrow">TRAINING</p><ul><li><span>Virtual Assistant Training</span><time>May 2026</time></li><li><span>Data Entry Training</span><time>June 2026</time></li><li><span>Social Media Marketing</span><time>July 2026</time></li></ul></div><div class="detail-block"><p class="eyebrow">CORE COMPETENCIES</p><div class="tool-pills"><span>Short-form video editing</span><span>Clip trimming &amp; cutting</span><span>Captions &amp; subtitles</span><span>Transitions &amp; effects</span><span>Music &amp; basic audio</span><span>Promotional content</span><span>File organization</span><span>Attention to detail</span></div></div><div class="detail-block"><p class="eyebrow">EDUCATION</p><div class="language-list"><span>High School Graduate · Philippines</span></div></div><div class="detail-block"><p class="eyebrow">LANGUAGES</p><div class="language-list"><span>English</span><span>Filipino</span></div></div></div></div></section>
 
 <section class="contact section-wrap" id="contact"><div class="contact-orbit"></div><div class="section-label mono"><span>06</span> CONTACT</div><div class="contact-copy"><p class="eyebrow">HAVE SOMETHING IN MIND?</p><h2>Let’s make it<br><span>worth watching.</span></h2><a class="button button-light" href="mailto:bernadethpaguio13@gmail.com">Email Bernadeth <span>↗</span></a></div><a class="contact-email mono" href="mailto:bernadethpaguio13@gmail.com">BERNADETHPAGUIO13@GMAIL.COM</a></section>
 </main><footer class="site-footer section-wrap"><a class="wordmark" href="#top"><span>BP</span><i>.</i></a><span class="mono">MADE WITH CARE · 2026</span><a class="mono back-top" href="#top">BACK TO TOP ↑</a></footer></body></html>

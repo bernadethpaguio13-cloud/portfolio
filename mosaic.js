@@ -9,6 +9,7 @@
   const portrait = new Image();
   const sprite = new Image();
   let ready = 0, parts = [], W = 0, H = 0, dpr = 1, raf = 0, visible = true, t0 = 0, lastT = 0;
+  let sil = null, silCols = 0, silRows = 0, silCell = 0; // soft black silhouette behind the tiles
   const pointer = { x: -9999, y: -9999, on: false };
 
   const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
@@ -47,6 +48,10 @@
     bgc[0] /= bn; bgc[1] /= bn; bgc[2] /= bn;
 
     parts = [];
+    sil = document.createElement('canvas'); sil.width = cols; sil.height = rows;
+    const sctx = sil.getContext('2d');
+    const sdata = sctx.createImageData(cols, rows);
+    silCols = cols; silRows = rows; silCell = cell;
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < cols; x++) {
         const i = (y * cols + x) * 4;
@@ -62,6 +67,10 @@
         const nx = (x / cols - 0.5) / 0.5, ny = (y / rows - 0.46) / 0.62;
         const vig = 1 - smooth(0.7, 1.15, Math.hypot(nx, ny));
         const lum = mask * (0.1 + 0.9 * tone) * vig;
+        // the person (and only the person) gets a black backdrop
+        const si = (y * cols + x) * 4;
+        sdata.data[si] = 6; sdata.data[si + 1] = 3; sdata.data[si + 2] = 16;
+        sdata.data[si + 3] = Math.round(255 * Math.min(1, mask * vig * 1.3));
         if (lum < 0.13) continue;
         const hx = (x + 0.5) * cell, hy = (y + 0.5) * cell;
         const a = hash(x * 31 + y * 17) * 6.283, r = 80 + hash(x * 7 + y * 13) * 260;
@@ -72,12 +81,21 @@
         });
       }
     }
+    sctx.putImageData(sdata, 0, 0);
     t0 = performance.now();
     if (reduce) { parts.forEach(p => { p.x = p.hx; p.y = p.hy; }); draw(1); }
   }
 
   function draw(intro) {
     ctx.clearRect(0, 0, W, H);
+    if (sil) {
+      ctx.save();
+      ctx.globalAlpha = Math.min(1, intro * 2.2);
+      ctx.imageSmoothingEnabled = true;
+      ctx.filter = 'blur(' + (silCell * 0.9).toFixed(1) + 'px)';
+      ctx.drawImage(sil, 0, 0, silCols, silRows, 0, 0, silCols * silCell, silRows * silCell);
+      ctx.restore();
+    }
     for (let i = 0; i < parts.length; i++) {
       const p = parts[i];
       const k = intro >= 1 ? 1 : Math.min(1, Math.max(0, (intro * 1.9 - p.d)));
