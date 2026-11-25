@@ -4,11 +4,11 @@
   const canvas = document.getElementById('mosaic');
   if (!canvas || !canvas.getContext) return;
   const ctx = canvas.getContext('2d');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches || /[?&]still\b/.test(location.search);
   const TW = 36, TH = 64, COLS = 8, COUNT = 32;
   const portrait = new Image();
   const sprite = new Image();
-  let ready = 0, parts = [], W = 0, H = 0, dpr = 1, raf = 0, visible = true, t0 = 0;
+  let ready = 0, parts = [], W = 0, H = 0, dpr = 1, raf = 0, visible = true, t0 = 0, lastT = 0;
   const pointer = { x: -9999, y: -9999, on: false };
 
   const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
@@ -94,6 +94,9 @@
     raf = 0;
     if (!visible) return;
     const intro = Math.min(1, (now - t0) / 1800);
+    // keep the motion the same speed on slow screens: scale each step by elapsed time
+    const k = Math.min(5, Math.max(0.5, (now - (lastT || now - 16.7)) / 16.7)); lastT = now;
+    const damp = Math.pow(0.8, k);
     const R = Math.max(70, W * 0.11), R2 = R * R;
     let moving = intro < 1;
     for (let i = 0; i < parts.length; i++) {
@@ -105,10 +108,10 @@
           p.vx += (dx / d) * f; p.vy += (dy / d) * f;
         }
       }
-      const ease = intro < 1 ? 0.06 : 0.09;
+      const ease = (intro < 1 ? 0.06 : 0.09) * k;
       p.vx += (p.hx - p.x) * ease; p.vy += (p.hy - p.y) * ease;
-      p.vx *= 0.8; p.vy *= 0.8;
-      p.x += p.vx; p.y += p.vy;
+      p.vx *= damp; p.vy *= damp;
+      p.x += p.vx * k; p.y += p.vy * k;
       if (!moving && (Math.abs(p.vx) > 0.02 || Math.abs(p.vy) > 0.02)) moving = true;
     }
     draw(intro);
