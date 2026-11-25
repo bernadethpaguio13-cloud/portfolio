@@ -64,8 +64,8 @@
         const l = (0.2126 * pr_ + 0.7152 * pg_ + 0.0722 * pb_) / 255;
         const tone = Math.pow(Math.min(1, Math.max(0, (l - 0.1) / 0.5)), 1.15);
         // fade the edges so the face emerges from the dark
-        const nx = (x / cols - 0.5) / 0.5, ny = (y / rows - 0.46) / 0.62;
-        const vig = 1 - smooth(0.7, 1.15, Math.hypot(nx, ny));
+        const nx = (x / cols - 0.5) / 0.5, ny = (y / rows - 0.5) / 0.5;
+        const vig = 1 - smooth(0.78, 1.02, Math.hypot(nx, ny));
         const lum = mask * (0.1 + 0.9 * tone) * vig;
         // the person (and only the person) gets a black backdrop
         const si = (y * cols + x) * 4;
@@ -88,12 +88,19 @@
 
   function draw(intro) {
     ctx.clearRect(0, 0, W, H);
-    if (sil) {
+    // soft black oval behind the person (phones only; on desktop the big oval is drawn by CSS)
+    if (window.matchMedia('(max-width: 980px)').matches) {
+      const rx = W * 0.5, ry = H * 0.5;
       ctx.save();
       ctx.globalAlpha = Math.min(1, intro * 2.2);
-      ctx.imageSmoothingEnabled = true;
-      ctx.filter = 'blur(' + (silCell * 0.9).toFixed(1) + 'px)';
-      ctx.drawImage(sil, 0, 0, silCols, silRows, 0, 0, silCols * silCell, silRows * silCell);
+      ctx.translate(W / 2, H / 2);
+      ctx.scale(1, ry / rx);
+      const g = ctx.createRadialGradient(0, 0, 0, 0, 0, rx);
+      g.addColorStop(0, 'rgba(6,3,16,1)');
+      g.addColorStop(0.7, 'rgba(6,3,16,1)');
+      g.addColorStop(1, 'rgba(6,3,16,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(-rx, -rx, rx * 2, rx * 2);
       ctx.restore();
     }
     for (let i = 0; i < parts.length; i++) {

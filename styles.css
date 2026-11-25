@@ -60,7 +60,7 @@ img,video{max-width:100%}
 .text-link:hover{color:var(--violet-2);border-color:currentColor}.text-link:hover span{transform:translate(3px,-3px)}
 
 /* ============ Hero (reference stage + animated mosaic person) ============ */
-.hero{padding:clamp(32px,4.5vw,64px) clamp(28px,4.5vw,64px) 84px;border-radius:36px;position:relative;overflow:hidden;color:#150a24;display:grid;grid-template-columns:1.05fr 1fr;grid-template-areas:"copy flower" "bubbles side";gap:20px 40px;min-height:840px;background:radial-gradient(55% 45% at 8% 0%,#fbc3ee 0%,transparent 70%),radial-gradient(60% 60% at 100% 100%,#241468 0%,transparent 70%),linear-gradient(155deg,#f3b4e6 0%,#bf8ae6 38%,#7b56c4 70%,#3b2a8c 100%);box-shadow:0 40px 90px #3b2a8c33;border:1px solid #ffffff55}
+.hero{padding:clamp(32px,4.5vw,64px) clamp(28px,4.5vw,64px) 84px;border-radius:36px;position:relative;overflow:hidden;color:#150a24;display:grid;grid-template-columns:1.05fr 1fr;grid-template-areas:"copy flower" "bubbles side";gap:20px 40px;min-height:840px;background:linear-gradient(90deg,transparent 46%,#5a37d6cc 66%,#3b22aa 82%,#2b1a8c 100%),radial-gradient(55% 45% at 8% 0%,#fbc3ee 0%,transparent 70%),linear-gradient(155deg,#f3b4e6 0%,#bf8ae6 38%,#9a70dc 70%,#6a4bc4 100%);box-shadow:0 40px 90px #3b2a8c33;border:1px solid #ffffff55}
 .hero-copy{grid-area:copy;position:relative;z-index:3}
 .hero .eyebrow{display:flex;align-items:center;gap:11px;color:#4a2f73}
 .hero h1{font-size:clamp(44px,5.1vw,78px);line-height:.98;letter-spacing:-.075em;margin:26px 0 22px;font-weight:500;color:#12081f;text-shadow:none}
@@ -425,3 +425,11 @@ h2{margin:0}
   .hero-bubbles{width:100%;max-width:520px;min-width:0}
   .hero-flower{max-width:100%}
 }
+
+@media(max-width:980px){
+  .hero{background:linear-gradient(180deg,transparent 38%,#5a37d6cc 62%,#3b22aa 82%,#2b1a8c 100%),radial-gradient(55% 45% at 8% 0%,#fbc3ee 0%,transparent 70%),linear-gradient(155deg,#f3b4e6 0%,#bf8ae6 38%,#9a70dc 70%,#6a4bc4 100%)}
+}
+
+/* one big black oval behind the person, flower, notes and card; the black fades out toward its outer edge */
+.hero:before{content:"";position:absolute;left:35.5%;top:-3%;width:61%;height:106%;border-radius:50%;background:radial-gradient(closest-side,#060310 0%,#060310 64%,rgba(6,3,16,0) 100%);pointer-events:none;z-index:0}
+@media(max-width:980px){.hero:before{display:none}}
