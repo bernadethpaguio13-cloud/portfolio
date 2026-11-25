@@ -82,6 +82,9 @@ document.querySelectorAll('.project-video').forEach((projectVideo) => {
   const title = dialog.querySelector('.cert-dialog-title');
   document.querySelectorAll('.cert-card').forEach((card) => {
     card.addEventListener('click', () => {
+      const frame = getComputedStyle(card).borderTopColor;
+      img.style.borderColor = frame;
+      img.style.boxShadow = '0 0 50px 8px ' + frame.replace('rgb(', 'rgba(').replace(')', ', .45)') + ', 0 30px 80px #000a';
       img.src = card.dataset.full;
       img.alt = 'Certificate of completion: ' + card.dataset.title;
       title.textContent = card.dataset.title;
@@ -90,4 +93,11 @@ document.querySelectorAll('.project-video').forEach((projectVideo) => {
   });
   dialog.querySelector('.cert-close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+})();
+
+/* Training layout preview: ?train=a | b */
+(() => {
+  const m = location.search.match(/[?&]train=(\w)/);
+  const t = document.getElementById('training');
+  if (m && t) t.classList.add('train-' + m[1]);
 })();

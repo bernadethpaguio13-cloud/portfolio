@@ -508,3 +508,57 @@ h2{margin:0}
 .cert-card:hover,.cert-card:focus-visible{box-shadow:0 0 30px 6px #ff2fc499,0 30px 56px #2a136a66}
 .cert-block .cert-card{border-width:2.5px;border-radius:10px}
 .cert-dialog img{border:4px solid #ff2fc4;box-shadow:0 0 50px 8px #ff2fc455,0 30px 80px #000a}
+
+/* ===== Livelier certificates: dark stage, colourful frames, shine, wave ===== */
+.cert-block .cert-rows{background:radial-gradient(120% 90% at 50% 0%,#3a1fb0 0%,#1b0f55 55%,#0a0626 100%);border:1px solid #ffffff33;border-radius:18px;padding:10px 0;gap:0;box-shadow:inset 0 0 40px #00000066,0 18px 40px #2a136a44}
+.cert-block .cert-row{margin:0;padding:12px 0}
+.cert-track .cert-card{--frame:#ff2fc4;--glow:#ff2fc466}
+.cert-track .cert-card:nth-child(4n+2){--frame:#9b6bff;--glow:#9b6bff66;margin-top:10px}
+.cert-track .cert-card:nth-child(4n+3){--frame:#ffd166;--glow:#ffd16666}
+.cert-track .cert-card:nth-child(4n+4){--frame:#5cc8ff;--glow:#5cc8ff66;margin-top:6px}
+.cert-card{border-color:var(--frame,#ff2fc4);box-shadow:0 0 18px 2px var(--glow,#ff2fc455),0 14px 34px #00000066}
+.cert-card:hover,.cert-card:focus-visible{box-shadow:0 0 34px 8px var(--glow,#ff2fc499),0 30px 56px #00000099}
+.cert-card:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 36%,rgba(255,255,255,.55) 50%,transparent 64%);transform:translateX(-140%);animation:certShine 7s ease-in-out infinite}
+.cert-track .cert-card:nth-child(3n+1):after{animation-delay:1.2s}
+.cert-track .cert-card:nth-child(3n+2):after{animation-delay:3.4s}
+.cert-track .cert-card:nth-child(3n):after{animation-delay:5.3s}
+.cert-card:hover:after{animation:certShine .9s ease-out 1}
+@keyframes certShine{0%,62%{transform:translateX(-140%)}100%{transform:translateX(140%)}}
+.cert-hint{color:#5a4a78}
+@media(prefers-reduced-motion:reduce){.cert-card:after{animation:none;opacity:0}}
+
+/* ===== Training: option A (horizontal stepper) ===== */
+.train-a ul{border-left:0;display:grid;grid-template-columns:repeat(3,1fr);position:relative;padding-top:2px}
+.train-a ul:before{content:"";position:absolute;left:16.6%;right:16.6%;top:12px;height:3px;border-radius:3px;background:linear-gradient(90deg,#ff2fc4,#7b2ff7)}
+.train-a li{flex-direction:column;align-items:center;text-align:center;padding:34px 8px 0;gap:3px;font-size:12px;line-height:1.3}
+.train-a li:before{left:50%;top:3px;margin:0;transform:translateX(-50%);width:20px;height:20px;background:#fff;border:3px solid #ff2fc4;box-shadow:0 0 14px #ff2fc499;z-index:1}
+.train-a li:nth-child(2):before{border-color:#b04bf5;box-shadow:0 0 14px #b04bf599}
+.train-a li:nth-child(3):before{border-color:#7b2ff7;background:#7b2ff7;box-shadow:0 0 18px 3px #7b2ff7aa}
+.train-a time{order:2;font-size:11px;color:#6a5a88}
+@media(max-width:680px){
+  .train-a ul{grid-template-columns:1fr;gap:12px}
+  .train-a ul:before{left:9px;right:auto;top:10px;bottom:10px;width:3px;height:auto;background:linear-gradient(180deg,#ff2fc4,#7b2ff7)}
+  .train-a li{flex-direction:row;justify-content:space-between;align-items:center;text-align:left;padding:2px 0 2px 36px;gap:10px}
+  .train-a li:before{left:0;top:50%;transform:translateY(-50%)}
+  .train-a time{order:0}
+}
+/* ===== Training: option B (small cards, no line) ===== */
+.train-b ul{border-left:0;display:grid;gap:8px}
+.train-b li{padding:10px 14px;border-radius:12px;background:#ffffff80;border:1px solid #ffffffb3;align-items:center}
+.train-b li:before{display:none}
+.train-b time{padding:3px 10px;border-radius:999px;font-size:11px;font-weight:500;color:#190f2b;background:#ff9ee3}
+.train-b li:nth-child(2) time{background:#c9b0ff}
+.train-b li:nth-child(3) time{background:#ffe08a}
+
+/* ===== Training + Certificates are connected ===== */
+.comp-block{margin:22px 0 0}
+.comp-block .tool-pills span{padding:6px 12px;font-size:12px}
+#training{padding-bottom:30px}
+.detail-block.cert-block{margin-top:0;position:relative}
+.cert-block .eyebrow{margin:0 0 12px}
+.cert-block:before{content:"";position:absolute;left:83.3%;top:-26px;width:3px;height:56px;transform:translateX(-50%);background:linear-gradient(180deg,#7b2ff7,#ff2fc4);border-radius:3px;z-index:3}
+.cert-block:after{content:"";position:absolute;left:83.3%;top:24px;width:13px;height:13px;transform:translateX(-50%);border-radius:50%;background:#ff2fc4;box-shadow:0 0 14px 4px #ff2fc499;z-index:3}
+.cert-hint{margin:10px 0 0;color:#5a4a78;font-size:12px}
+@media(max-width:680px){
+  .cert-block:before,.cert-block:after{left:10px}
+}
